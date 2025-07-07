@@ -26,9 +26,10 @@ python -m venv .venv
 
 Activeer de omgeving:
 
-```sh
-source .venv/bin/activate
-```
+| Platform    | Commando                    |
+| ----------- | --------------------------- |
+| Windows     | `.venv\Scripts\activate`    |
+| macOS/Linux | `source .venv/bin/activate` |
 
 Installeer de benodigde Python packages in de virtuele omgeving:
 
