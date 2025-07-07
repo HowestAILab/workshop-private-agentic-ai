@@ -1,0 +1,37 @@
+{
+  "name": "Workshop Private Agentic AI",
+  "runArgs": [
+    "--name",
+    "${localEnv:USER}_${localWorkspaceFolderBasename}",
+    "--gpus=all",
+    "--runtime=nvidia"
+  ],
+  "hostRequirements": {
+    "gpu": true
+  },
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/prulloac/devcontainer-features/ollama:1": {
+      "pull": ["llama3"]
+    }
+  },
+  "remoteUser": "root",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "natqe.reload",
+        "ms-python.python",
+        "ms-python.vscode-pylint",
+        "ms-python.black-formatter",
+        "ms-toolsai.jupyter",
+        "esbenp.prettier-vscode",
+        "kurozero.vscode-commit-reminder"
+      ]
+    }
+  }
+}
