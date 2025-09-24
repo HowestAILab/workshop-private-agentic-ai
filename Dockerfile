@@ -135,21 +135,16 @@ RUN curl -fsSL https://ollama.com/install.sh | sh
 
 # ===============================================================================================
 
-# Start Ollama server (default port 11434)
-RUN ollama serve
-
-# ===============================================================================================
-
-# Pull llama3.1 model
-RUN ollama pull llama3.1
-
-# ===============================================================================================
-
 # Install Python & dev tools
 RUN apt-get update && apt-get -yq install --no-install-recommends python3 python3.12-dev build-essential g++ cmake ninja-build python3-venv && alias python=python3
 RUN python3 -m venv ${HOME}/.venv
 
 # ===============================================================================================
+# Add startup wrapper
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
 
-# Start
-ENTRYPOINT ["/init"]
+# ===============================================================================================
+# Keep existing ENTRYPOINT, but override it with our script
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["/init"]
