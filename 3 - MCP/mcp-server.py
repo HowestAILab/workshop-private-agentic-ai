@@ -12,7 +12,7 @@ loader = PyPDFLoader("./Blogpost.pdf")
 documents = loader.load()
 splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=128)
 chunks = splitter.split_documents(documents)
-embedder = OllamaEmbeddings(model="llama3")
+embedder = OllamaEmbeddings(model="llama3.1")
 vectordb = Milvus(embedding_function=embedder, connection_args={"uri": URI})
 vectordb.add_documents(chunks)
 
